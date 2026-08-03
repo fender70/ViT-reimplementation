@@ -1,17 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "vit-reimplementation"
 version = "0.1.0"
-description = "Add your description here"
+description = "A from-scratch Vision Transformer implementation for learning and experiments"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.11"
 dependencies = [
-    "ipykernel>=7.3.0",
-    "jupyter>=1.1.1",
-    "jupyterlab>=4.6.2",
-    "lab>=8.10",
-    "matplotlib>=3.11.1",
-    "numpy>=2.5.1",
-    "pandas>=3.0.5",
-    "torch>=2.13.0",
-    "torchvision>=0.28.0",
+    "matplotlib",
+    "numpy",
+    "torch",
+    "torchvision",
+    "tqdm",
 ]
+
+[dependency-groups]
+dev = [
+    "ipykernel",
+    "jupyterlab",
+    "pytest",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vit_reimplementation"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
